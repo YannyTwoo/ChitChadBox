@@ -1,0 +1,48 @@
+body{
+    background-color: azure;
+}
+
+.chatBoxHeader{
+    border-bottom: 2px solid black;
+}
+.chatBox{
+    border: 2px solid black;
+    max-width: 18rem;
+    min-width: 15rem;
+    
+    position:fixed;
+    bottom: 0px;
+    right: 5px;
+
+    font-family: 'Courier New', Courier, monospace;
+}
+.chatBoxClose{
+    float:right;
+    padding-right: 1rem;
+}
+.chatBoxBody{
+    height: 7rem;
+    overflow-y: scroll;
+}
+.chatInput{
+    border-top: 2px solid black;
+    /* padding: 2px 0 2px; */
+}
+
+#chatLogs{
+    display: flex;
+    flex-direction: column;
+}
+.chatMsgMe{
+    text-align: right;
+    border-bottom: 2px solid black;
+}
+.chatMsgOther{
+    text-align: left;
+    border-bottom: 2px solid black;
+}
+
+.chatMsgLeave{
+    text-align: center;
+    border-bottom: 2px solid black;
+}
