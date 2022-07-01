@@ -29,8 +29,8 @@ socket.on("connection")
 socket.on('receive_message', (data) => {
     receivedMessage(data);
 })
-socket.on('disconnect', (payload) => {
-    leftTheChat(payload)
+socket.on('disconnect', (text) => {
+    leftTheChat(text)
 })
 
 
@@ -56,8 +56,8 @@ function addMeMsg(text) {
 function addOtherUserMsg(data) {
     chatLogs.innerHTML += `<div class="chatMsgOther"><div class="chatMsgOtherUser"><span>${(data.user).substring(1, 5)}...:</span></div><div class="chatMsgOtherText">${data.text}</div></div>`
 }
-function leftTheChat(data) {
-    chatLogs.innerHTML += `<div class="chatMsgLeave"><div class="chatMsgLeave"><span>${(data.user).substring(1, 5)}... has left the chat</span></div><div class="chatMsgLeave">${data.text}</div></div>`
+function leftTheChat(text) {
+    chatLogs.innerHTML += `<div class="chatMsgLeave"><div class="chatMsgLeaveUser"><span>${text}... has left the chat</span></div></div>`
 }
 
 

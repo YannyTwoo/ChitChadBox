@@ -21,7 +21,7 @@ body{
     padding-right: 1rem;
 }
 .chatBoxBody{
-    height: 7rem;
+    height: 8rem;
     overflow-y: scroll;
 }
 .chatInput{
@@ -43,6 +43,6 @@ body{
 }
 
 .chatMsgLeave{
-    text-align: center;
+    text-align: left;
     border-bottom: 2px solid black;
 }

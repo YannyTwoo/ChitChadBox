@@ -19,18 +19,20 @@ app.use(express.json());
 // ---------------------
 
 
-let users = [];
+let users = []; // stores the list of users
 
-//socket.on('name_of_event', (data)=>{}) . Here on is listening for the event and data is the payload received from the frontend
-// socket.emit('name_of_other_event' , data) . Here socket is emitting another event with a payload called data
+
+
 io.on("connection", (socket)=>{ // this way we listen to events. This is the connection event.
     console.log(`the connected user is ${socket.id}`)
-    
-    //custom events
-    // socket.on("join_room", (data)=>{ //data is the json obj that was received
-    //     socket.join(data.room);
-    //     console.log(`User with id: ${socket.id} joined the room:${data.room}`)
-    // })
+    users.push(socket.id)
+    // custom events, you can add yours as shown below
+    // socket.emit('name_of_event' , data=>{
+    // the tasks to do using this data
+    //      socket.broadcast.emit('name_of_event', payload)
+    // }) 
+    // Here socket is emitting payload to name_of_event 
+
     socket.on("send_message",(data)=>{
         payload = {
             text: data,
@@ -40,18 +42,15 @@ io.on("connection", (socket)=>{ // this way we listen to events. This is the con
         // socket.emit('receive_message', data);
         // socket.broadcast.emit("receive_message", data)
     })
-    socket.on("disconnect", ()=>{
-        console.log("User disconnected", socket.id);
-        payload = {
-            user: socket.id
-        }
-    })
+    socket.on("disconnect", function() {
+        console.log(`${socket.id} has left the chat`)
+     })
 })
 
-
-app.get("/", (req, res) => {
-    res.sendFile('index.html')
-})
+// written to test functionality 
+// app.get("/", (req, res) => {
+//     res.sendFile('index.html')
+// })
 
 server.listen(PORT, () => {
     console.log(`running on ${PORT} boi`)
